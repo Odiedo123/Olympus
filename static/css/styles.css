@@ -1,0 +1,301 @@
+body {
+  height: 320vh;
+  overflow-x: hidden;
+  background-color: rgb(255, 255, 255);
+  scroll-snap-type: y mandatory;
+  cursor: url("feather-2.png"), auto;
+}
+
+h1,
+h2 {
+  color: rgb(0, 0, 0);
+}
+
+a {
+  text-decoration: none;
+}
+
+#scroll-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  padding-top: 7px;
+  backdrop-filter: blur(10px); /* Blur the background behind */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  background-color: whitesmoke;
+  opacity: 0.7;
+  z-index: 100;
+  box-shadow: 8px -11px 84px 0px rgba(0, 0, 0, 0.75);
+}
+
+#logo {
+  font-family: "Kapakana", sans-serif;
+  font-size: 55px;
+  position: fixed;
+  left: 40px;
+  cursor: pointer;
+  color: #6a0dad;
+  text-decoration: none;
+}
+
+#logo a {
+  color: #6a0dad;
+}
+
+.navigation-bar h2 {
+  position: relative; /* Needed for absolute positioning of ::after */
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 100;
+  color: black;
+  transition: 0.5s ease;
+}
+
+.navigation-bar h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%; /* Start with no underline */
+  height: 2px;
+  background-color: blue;
+  transition: width 0.4s ease; /* Smooth expand */
+}
+
+.navigation-bar h2:hover::after {
+  width: 100%; /* Expand underline to full width */
+}
+
+.navigation-bar h2:hover {
+  color: blue;
+}
+
+#search-bar {
+  position: fixed;
+  right: 30px;
+  cursor: pointer;
+  height: 10px;
+  width: 150px;
+  padding: 20px;
+  border: none;
+  border-radius: 7px;
+  background-color: black;
+  color: white;
+  opacity: 0.7;
+}
+
+.zeus-section {
+  margin-top: 25vh;
+  height: 70vh;
+  width: 95vw;
+  margin-left: 2vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  background: linear-gradient(75deg, #ff5300 0%, rgba(0, 255, 217, 0.808) 80%);
+  border: 3px solid grey;
+  border-radius: 30px;
+  scroll-snap-align: start;
+}
+
+.zeus-section::before {
+  filter: blur(30px);
+  z-index: -1;
+}
+
+.zeus-section div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 40%;
+}
+
+#section-1 {
+  justify-content: left;
+  align-items: start;
+  flex-direction: column;
+  margin-top: 70px;
+  margin-left: -75px;
+}
+
+#gods-name {
+  font-size: 2em;
+  border-right: 5px solid rgb(255, 255, 255);
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(
+    to right,
+    rgba(70, 130, 255, 0.7) 50%,
+    rgba(70, 130, 255, 0) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom; /* Start fully hidden */
+  padding: 2px 6px;
+  animation: swipeBackground1 1.3s ease-in-out forwards;
+  animation-delay: 3.5s;
+}
+
+@keyframes swipeBackground1 {
+  from {
+    background-position: right bottom;
+    border: none; /* background hidden */
+  }
+  to {
+    background-position: left bottom;
+    border: none; /* background fully visible */
+  }
+}
+
+p {
+  color: rgb(255, 255, 255);
+  font-family: "Inter", sans-serif;
+  font-size: 19px;
+}
+
+#highlight {
+  background: linear-gradient(to right, #6a0dadb0 50%, #6a0dad00 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  animation: swipeBackground 1s ease-in-out forwards;
+  animation-direction: reverse;
+}
+
+@keyframes swipeBackground {
+  from {
+    background-position: left bottom;
+  }
+  to {
+    background-position: right bottom;
+  }
+}
+
+#start-button {
+  position: relative;
+  border-radius: 10px;
+  border: none;
+  height: 50px;
+  width: 170px;
+  font-size: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #a7f1c1;
+  transition: 0.5s ease;
+}
+
+#start-button:hover {
+  color: white;
+  background-image: none;
+  background-color: #ff6f00;
+}
+
+#zeus {
+  height: 135%;
+  margin-right: -20px;
+  margin-top: -155px;
+  cursor: pointer;
+}
+
+.vertical-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 130vh; /* Adjust the height as needed */
+  margin-top: 100px;
+}
+
+.vertical-divider div {
+  flex-grow: 1;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 66, 233, 0.91) 0%,
+    #ff3500 80%
+  );
+}
+
+.hades-section {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 80vh;
+  margin-top: 10vh;
+  z-index: 20;
+  transition: opacity 0.8s ease-out;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.hades-section div {
+  width: 50%;
+}
+
+#hades {
+  height: auto;
+  width: 65%;
+  margin-top: -100px;
+}
+
+#text-section h2 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  color: goldenrod;
+}
+
+#text-section p,
+h2 {
+  color: whitesmoke;
+  font-family: "Inter", sans-serif;
+}
+
+#decoration-1 {
+  position: fixed;
+  top: 30px;
+  left: 100px;
+  width: 200vw;
+  height: 100px;
+  z-index: -1000;
+  transform: rotate(-45deg);
+  box-shadow: 8px 10px 63px 0px rgba(0, 0, 0, 0.75);
+  filter: blur(0.5px);
+}
+
+#decoration-2 {
+  position: fixed;
+  top: 30px;
+  right: -200px;
+  width: 200vw;
+  height: 100px;
+  z-index: -1000;
+  transform: rotate(-45deg);
+  box-shadow: 8px 10px 63px 0px rgba(0, 0, 0, 0.75);
+}
